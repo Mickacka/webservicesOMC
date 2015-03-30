@@ -1,0 +1,16 @@
+package server;
+
+public class MainServer {
+
+	public static void main(String[] args) {
+		try {
+			BiblioInterface bib = new Bib();
+			Naming.rebind("rmi://localhost:1099/BibService", bib);
+			}
+			catch (Exception (Exception e) {
+			System.out.println("Trouble: " + e);
+		}
+
+	}
+
+}

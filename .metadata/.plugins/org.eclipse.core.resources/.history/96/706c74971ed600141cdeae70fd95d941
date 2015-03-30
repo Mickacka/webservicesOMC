@@ -1,0 +1,10 @@
+package client;
+
+import java.rmi.*;
+
+public interface BiblioInterface extends Remote{
+	boolean emprunter(IClient ic, int idLivre);
+	void retourner(IClient ic, int idLivre);
+	int chercheLivreParTitre(String titre);
+
+}

@@ -1,0 +1,48 @@
+package server;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+public class Exemplaire {
+
+
+	Livre l;
+	ArrayList<String> commentaires;
+	IClient emprunteur;
+	
+	public Exemplaire(Livre l){
+		this.l=l;
+		commentaires=new ArrayList<String>();
+		emprunteur=null;
+	}
+	
+	public Livre getL() {
+		return l;
+	}
+
+	public void setL(Livre l) {
+		this.l = l;
+	}
+
+	public ArrayList<String> getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(ArrayList<String> commentaires) {
+		this.commentaires = commentaires;
+	}
+
+	public IClient getEmprunteur() {
+		return emprunteur;
+	}
+
+	public void setEmprunteur(IClient emprunteur) {
+		this.emprunteur = emprunteur;
+	}
+	public void retourner() throws RemoteException{
+		emprunteur=null;
+		if(l.getFileAttente().size()>0)
+			
+			
+	}
+}

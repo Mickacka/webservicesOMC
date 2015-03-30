@@ -1,0 +1,22 @@
+package server;
+
+import java.rmi.*;
+import java.rmi.registry.*;
+import java.rmi.server.UnicastRemoteObject;
+
+public class MainServer {
+
+	public static void main(String[] args) {
+		try {
+			System.setProperty("java.rmi.server.codebase", "file:/C:/Users/Clément/webservices/BiblioServer/bin/server");
+			LocateRegistry.createRegistry(1099);
+			IBiblio bib = new Biblio();
+			Naming.rebind("rmi://localhost:1099/BibService", bib);
+		}
+		catch (Exception e) {
+			System.out.println("Trouble: " + e);
+		}
+
+	}
+
+}

@@ -1,0 +1,63 @@
+package server;
+
+import java.util.*;
+
+public class Livre {
+
+	int id;
+
+
+	String titre;
+	String auteur;
+	LinkedList<IClient> fileAttente;
+	ArrayList<Exemplaire> ex;
+
+	public Livre(){
+
+	}
+	public Livre(String titre, String aut){
+		this.titre=titre;
+		auteur=aut;
+		fileAttente=new LinkedList<IClient>();
+		ex=new ArrayList<Exemplaire>();
+	}
+
+	public String getTitre() {
+		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+	public String getAuteur() {
+		return auteur;
+	}
+
+	public void setAuteur(String auteur) {
+		this.auteur = auteur;
+	}
+
+	public LinkedList<IClient> getFileAttente() {
+		return fileAttente;
+	}
+
+	public void setFileAttente(LinkedList<IClient> fileAttente) {
+		this.fileAttente = fileAttente;
+	}
+
+	public ArrayList<Exemplaire> getEx() {
+		return ex;
+	}
+
+	public void setEx(ArrayList<Exemplaire> ex) {
+		this.ex = ex;
+	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+}

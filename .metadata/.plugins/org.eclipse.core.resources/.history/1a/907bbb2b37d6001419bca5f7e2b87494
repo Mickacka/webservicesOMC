@@ -1,0 +1,28 @@
+
+
+import java.net.*;
+import java.rmi.Naming;
+import java.rmi.RMISecurityManager;
+
+public class MainClient {
+
+	public static void main(String[] args) {
+
+		try
+		{
+			Client c1=new Client();
+			System.setProperty("java.rmi.server.codebase", "file:/C:/Users/Clément/webservices/BiblioServer/bin/");
+			System.setProperty( "java.security.policy", "C:\\Users\\Clément\\webservices\\BiblioEmpruntClient\\src\\policy.txt" );
+			System.setSecurityManager(new RMISecurityManager());
+			IBiblio c = (IBiblio) Naming.lookup("rmi://localhost:1099/BibService");
+			c.addLivre("Harry Potter 1", "JK.ROWLING");
+			int d=c.chercheLivre("Harry Potter 1", "JK.ROWLING");
+			c.emprunter(c1, d);
+			Client c2=new Client();
+		} catch (Exception e)
+		{
+			System.out.println("Trouble:" + e);
+		}
+	}
+
+}

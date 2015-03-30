@@ -1,0 +1,12 @@
+package server;
+
+import java.util.*;
+
+public class Livre {
+	String titre;
+	String auteur;
+	LinkedList<IClient> fileAttente;
+
+	A
+	public Livre()
+}

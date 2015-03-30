@@ -1,0 +1,12 @@
+package server;
+
+import java.rmi.*;
+
+public interface BiblioInterface extends Remote{
+	boolean emprunter(IClient ic, int idLivre) throws RemoteException;
+	void retourner(IClient ic, int idLivre) throws RemoteException;
+	int chercheLivreParTitre(String titre) throws RemoteException;
+	void addLivre(String titre, String auteur) throws RemoteException;
+	void addExemplaire(String titre, String auteur) throws RemoteException
+
+}

@@ -1,0 +1,22 @@
+package client;
+
+import java.rmi.Naming;
+
+public class MainClient {
+
+	public static void main(String[] args) {
+
+		try
+		{
+			
+			System.setProperty( "java.security.policy", "C:\\Users\\Clément\\webservices\\BiblioEmpruntClient\\src\\client\\policy.txt" );
+			System.setSecurityManager(new RMISecurityManager());
+			IBiblio c = (IBiblio) Naming.lookup("rmi://localhost:1099/BibService");
+
+		} catch (Exception e)
+		{
+			System.out.println("Trouble:" + e);
+		}
+	}
+
+}

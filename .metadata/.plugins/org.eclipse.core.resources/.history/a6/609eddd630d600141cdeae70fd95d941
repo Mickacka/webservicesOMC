@@ -1,0 +1,33 @@
+
+
+import java.rmi.Naming;
+import java.rmi.RMISecurityManager;
+
+public class MainClient {
+
+	public static void main(String[] args) {
+
+		try
+		{
+			 ClassLoader sysClassLoader = ClassLoader.getSystemClassLoader();
+
+		        //Get the URLs
+		        URL[] urls = ((URLClassLoader)sysClassLoader).getURLs();
+
+		        for(int i=0; i< urls.length; i++)
+		        {
+		            System.out.println(urls[i].getFile());
+		        }       
+
+		        
+			System.setProperty( "java.security.policy", "C:\\Users\\Clément\\webservices\\BiblioEmpruntClient\\src\\policy.txt" );
+			System.setSecurityManager(new RMISecurityManager());
+			IBiblio c = (IBiblio) Naming.lookup("rmi://localhost:1099/BibService");
+
+		} catch (Exception e)
+		{
+			System.out.println("Trouble:" + e);
+		}
+	}
+
+}

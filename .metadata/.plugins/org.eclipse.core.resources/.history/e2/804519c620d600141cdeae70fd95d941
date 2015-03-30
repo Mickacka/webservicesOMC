@@ -1,0 +1,13 @@
+package server;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class Biblio extends UnicastRemoteObject implements BiblioInterface {
+
+	protected Biblio() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+}

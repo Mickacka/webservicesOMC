@@ -1,0 +1,10 @@
+
+
+import java.rmi.*;
+
+public interface IBiblio extends Remote{
+	IExemplaire emprunter(IClient ic, int idLivre) throws RemoteException;
+	int chercheLivre(String titre, String auteur) throws RemoteException;
+	int addLivre(String titre, String auteur) throws RemoteException;
+
+}

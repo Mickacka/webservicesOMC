@@ -1,0 +1,15 @@
+package server;
+
+import java.util.ArrayList;
+
+public class Exemplaire {
+	Livre l;
+	ArrayList<String> commentaires;
+	IClient possedeur;
+	
+	public Exemplaire(Livre l){
+		this.l=l;
+		commentaires=new ArrayList<String>();
+		possedeur=null;
+	}
+}

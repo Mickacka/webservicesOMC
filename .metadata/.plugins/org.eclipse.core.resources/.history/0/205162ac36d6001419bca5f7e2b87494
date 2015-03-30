@@ -1,0 +1,76 @@
+
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+
+public class Biblio extends UnicastRemoteObject implements IBiblio{
+
+	ArrayList<Livre> listeLivres;
+
+	protected Biblio() throws RemoteException {
+		super();
+		listeLivres=new ArrayList<Livre>();
+		// TODO Auto-generated constructor stub
+	}
+
+	public IExemplaire emprunter(IClient ic, int idLivre) throws RemoteException{ //TODO reflechir a syncrhodnized
+		Livre liv=chercheLivreById(idLivre);
+		if(liv==null)
+			return null;
+
+
+		for(Exemplaire e:liv.getEx()){
+			if (e.getEmprunteur()==null){
+				e.setEmprunteur(ic);
+				return e;
+			}
+		}
+
+		liv.getFileAttente().addLast(ic);
+		return null;
+
+
+
+	}
+
+
+
+	public int chercheLivre(String titre, String auteur) throws RemoteException{
+		for(Livre i:listeLivres){
+			if(i.getTitre().equals(titre) && i.getAuteur().equals(auteur)){
+				return i.getId();//DZQPHIDZQI¨JPOD¨M
+				
+			}
+		}
+		return -1;
+	}
+
+	public Livre chercheLivreById(int id){
+		for(Livre i:listeLivres){
+			if(i.getId()==id){
+				return i;
+			}
+		}
+		return null;
+	}
+
+	public int addLivre(String titre, String auteur) throws RemoteException{
+		//Verification de l'existance du livre
+		Livre l=chercheLivreById(chercheLivre(titre,auteur)); // TODO SI TEMPS : verification de l'id etc..
+		if(l!=null){
+			l.getEx().add(new Exemplaire(l));
+			return 1;
+		}
+		else{
+			listeLivres.add(l=new Livre(titre,auteur));
+			l.getEx().add(new Exemplaire(l));
+			return 2;
+		}
+
+	}
+
+
+
+
+}

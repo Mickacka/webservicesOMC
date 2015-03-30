@@ -1,0 +1,32 @@
+package server;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+
+public class Biblio extends UnicastRemoteObject implements BiblioInterface {
+	
+	ArrayList<Livre> listeLivres;
+
+	protected Biblio() throws RemoteException {
+		super();
+		listeLivres=new ArrayList<Livre>();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public boolean emprunter(IClient ic, int idLivre) throws RemoteException{
+		
+		
+	}
+	public void retourner(IClient ic, int idLivre) throws RemoteException{
+		
+	}
+	public ILivre chercheLivreParTitre(String titre) throws RemoteException{
+		
+	}
+	
+	public void addLivre(String titre, String auteur) throws RemoteException{
+		
+	}
+
+}

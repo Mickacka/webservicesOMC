@@ -1,0 +1,14 @@
+
+
+import java.util.ArrayList;
+
+public class Client implements IClient {
+	ArrayList<IExemplaire> exmplaire;
+
+	@Override
+	public void notif() {
+		System.out.println("TOUDOUDOUDO");
+		// TODO Auto-generated method stub
+		
+	}
+}
