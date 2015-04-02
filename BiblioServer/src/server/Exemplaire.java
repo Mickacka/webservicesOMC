@@ -10,16 +10,17 @@ import remoteInterface.IExemplaire;
 
 public class Exemplaire extends UnicastRemoteObject implements IExemplaire{
 
-
+	static int idExemplaire=1;
+	int id;
 	Livre l;
-	ArrayList<String> commentaires;
 	IClient emprunteur;
+	boolean enPanier;
 	
 	public Exemplaire() throws RemoteException{}
 	
 	public Exemplaire(Livre l) throws RemoteException{
+		id=idExemplaire++;
 		this.l=l;
-		commentaires=new ArrayList<String>();
 		emprunteur=null;
 	}
 	
@@ -31,13 +32,6 @@ public class Exemplaire extends UnicastRemoteObject implements IExemplaire{
 		this.l = l;
 	}
 
-	public ArrayList<String> getCommentaires() {
-		return commentaires;
-	}
-
-	public void setCommentaires(ArrayList<String> commentaires) {
-		this.commentaires = commentaires;
-	}
 
 	public IClient getEmprunteur() {
 		return emprunteur;
@@ -57,4 +51,34 @@ public class Exemplaire extends UnicastRemoteObject implements IExemplaire{
 			
 			
 	}
+
+	@Override
+	public void ajoutCommentaire(String commentaire) throws RemoteException {
+		l.getCommentaires().add(commentaire);
+		
+	}
+
+	@Override
+	public double getPrix() throws RemoteException {
+		return l.getPrix();
+	}
+
+	public boolean isEnPanier() {
+		return enPanier;
+	}
+
+	public void setEnPanier(boolean enPanier) {
+		this.enPanier = enPanier;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	
 }

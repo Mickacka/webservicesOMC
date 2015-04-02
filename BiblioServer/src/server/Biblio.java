@@ -72,6 +72,24 @@ public class Biblio extends UnicastRemoteObject implements IBiblio{
 
 	}
 
+	@Override
+	public IExemplaire mettreEnPanier(int idLivre) throws RemoteException {
+		Livre liv=chercheLivreById(idLivre);
+		if(liv==null)
+			return null;
+
+
+		for(Exemplaire e:liv.getEx()){
+			if (e.getEmprunteur()==null){
+				return e;
+			}
+		}
+
+		//liv.getFileAttente().addLast(ic);
+		//TODO BONUS : mettre une file d'attente pour les clients
+		return null;
+	}
+
 
 
 
